@@ -22,6 +22,7 @@ enum custom_keycodes {
 
 #define CALTDEL LCTL(LALT(KC_DEL))
 #define TSKMGR LCTL(LSFT(KC_ESC))
+#define SS LGUI(LSFT(KC_S))
 #define LCBR LSFT(LOPT(DK_8))
 #define RCBR LSFT(LOPT(DK_9))
 
@@ -47,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |      |      |      |      |      | Bksp |
+ * |  SS  |  F1  |  F2  |  F3  |  F4  |  F5  |      |      |      |      |      | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |  F6  |  F7  |  F8  |  F9  |  F10 |      |      |      |      |      | Del  |
+ * | Caps |  F6  |  F7  |  F8  |  F9  |  F10 |      |      |      |      |      | Del  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Trans|  F11 |  F12 |  F13 |  F14 |  F15 |      |      |      |      |      | Play |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -57,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12(
-  _______, KC_F1,        KC_F2,    KC_F3,    KC_F4,   KC_F5,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-  KC_NO,   KC_F6,        KC_F7,    KC_F8,    KC_F9,   KC_F10, KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_DEL,
+  SS,        KC_F1,        KC_F2,    KC_F3,    KC_F4,   KC_F5,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
+  KC_CAPS,   KC_F6,        KC_F7,    KC_F8,    KC_F9,   KC_F10, KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_DEL,
   _______,   KC_F11,       KC_F12,   KC_F13,   KC_F14,  KC_F15, KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MPLY,
   _______,   TO(_NUMPAD),  _______,  _______,  _______, KC_SPC, KC_SPC, _______, KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD
 ),
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |  GRV |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |  +,? |¨,^,~ |   [  |   ]  |   å  | Del  |
+ * | Altgr|      |      |      |      |      |  +,? |¨,^,~ |   [  |   ]  |   å  | Del  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Trans|      |      |      |      |      |   $  |  ´,` |   {  |   }  | '',* | Play |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ortho_4x12(
   KC_GRV,  KC_1,        KC_2,    KC_3,    KC_4,    KC_5,    KC_6,     KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_NO,   KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MINS,  DK_DIAE, DK_LBRC, DK_RBRC, KC_LBRC, KC_DEL,
+  KC_RALT, KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MINS,  DK_DIAE, DK_LBRC, DK_RBRC, KC_LBRC, KC_DEL,
   _______, KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NUBS,  DK_ACUT, LCBR,    RCBR,    KC_BSLS, KC_MPLY,
   _______, TO(_NUMPAD), _______, _______, _______, KC_SPC,  KC_SPC,   _______, KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD
 ),
@@ -101,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Numpad
  * ,-----------------------------------------------------------------------------------.
- * |QWERTY|      |      |      |      |      | Num_L|   7  |   8  |   9  |   +  |      |
+ * |QWERTY|      |      |      |      |      | Num_L|   7  |   8  |   9  |   +  | BSPC |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   4  |   5  |   6  |   -  |   =  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -111,8 +112,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMPAD] = LAYOUT_ortho_4x12(
-  TO(_QWERTY), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NUM, KC_P7, KC_P8,   KC_P9,   KC_PPLS, KC_NO,
-  KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_P4, KC_P5,   KC_P6,   KC_PMNS, KC_PEQL,
+  TO(_QWERTY), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NUM, KC_P7, KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,
+  KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_P4, KC_P5,   KC_P6,   KC_PMNS, DK_EQL,
   KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_P1, KC_P2,   KC_P3,   KC_PAST, KC_ENT,
   KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_SPC, KC_SPC, KC_P0, KC_PDOT, KC_LEFT, KC_PSLS, KC_RGHT
 ),
@@ -184,28 +185,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Define the integer array representing the LED status
 int lower_leds[ARRAY_ROWS][ARRAY_COLS] = {
-    {0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1},
-    {0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1},
-    {1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    {4, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4},
+    {4, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4},
+    {4, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4},
+    {4, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4}
 };
 int raise_leds[ARRAY_ROWS][ARRAY_COLS] = {
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-    {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1},
-    {1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    {2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2},
+    {2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2},
+    {2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2},
+    {2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2}
 };
 int numpad_leds[ARRAY_ROWS][ARRAY_COLS] = {
-    {1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0},
-    {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1},
-    {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1},
-    {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1}
+    {1, 6, 6, 6, 6, 6, 1, 5, 5, 5, 1, 1},
+    {6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 1, 1},
+    {6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 1, 1},
+    {6, 6, 6, 6, 6, 6, 1, 5, 1, 1, 1, 1}
 };
 int mouse_leds[ARRAY_ROWS][ARRAY_COLS] = {
-    {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0},
-    {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0},
-    {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1},
-    {1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
 int keyboard[ARRAY_COLS][ARRAY_COLS] = {
     {0, 1, 2, 4, 5, 6, 36, 37, 38, 40, 41, 42},
@@ -218,13 +219,25 @@ int keyboard[ARRAY_COLS][ARRAY_COLS] = {
 void update_led_matrix(int (*array)[ARRAY_COLS], int x, int y) {
     for (int row = 0; row < x; ++row) {
         for (int col = 0; col < y; ++col) {
-            if (array[row][col]) {
-                // Turn on the corresponding LED
+          switch(array[row][col]) {
+            case 6:
+                rgb_matrix_set_color(keyboard[row][col], RGB_OFF);
+                break;
+            case 5:
                 rgb_matrix_set_color(keyboard[row][col], RGB_GREEN);
-            } else {
-                // Turn off the corresponding LED
-               rgb_matrix_set_color(keyboard[row][col], RGB_OFF);
-            }
+                break;
+            case 4:
+                rgb_matrix_set_color(keyboard[row][col], RGB_TEAL);
+                break;
+            case 2:
+                rgb_matrix_set_color(keyboard[row][col], RGB_MAGENTA);
+                break;
+            case 1:
+                rgb_matrix_set_color(keyboard[row][col], RGB_BLUE);
+                break;
+            default:
+                break;
+          }
         }
     }
 }
